@@ -8,19 +8,25 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/coursetrak",
         "index": "apps/coursetrak/src/index.html",
         "browser": "apps/coursetrak/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "apps/coursetrak/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/coursetrak/src/favicon.ico",
           "apps/coursetrak/src/assets"
         ],
-        "styles": ["apps/coursetrak/src/styles.scss"],
+        "styles": [
+          "apps/coursetrak/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -70,7 +76,9 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "apps/coursetrak/jest.config.ts"
       }

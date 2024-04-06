@@ -1,1 +1,32 @@
+@use '@angular/material-experimental' as matx;
+@use '@angular/material' as mat;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@include mat.core();
+
 /* You can add global styles to this file, and also import other style files */
+
+$theme: matx.define-theme(
+  (
+    color: (
+      theme-type: light,
+      primary: matx.$m3-azure-palette,
+    ),
+    typography: (
+      brand-family: 'Roboto',
+      bold-weight: 900,
+    ),
+  )
+);
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  @include mat.all-component-themes($theme);
+  @include mat.typography-hierarchy($theme, $back-compat: true);
+}

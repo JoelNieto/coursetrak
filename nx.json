@@ -88,7 +88,8 @@
       "inlineStyle": true,
       "inlineTemplate": true,
       "changeDetection": "OnPush",
-      "nameAndDirectoryFormat": "derived"
+      "nameAndDirectoryFormat": "derived",
+      "flat": true
     }
   },
   "nxCloudAccessToken": "MDRiODNkYzctNTIwZS00ZTgwLTk1NzgtNWViZWUyOTEwZDVifHJlYWQtd3JpdGU="
