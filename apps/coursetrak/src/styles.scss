@@ -5,6 +5,7 @@
 @tailwind utilities;
 
 @include mat.core();
+@import 'quill/dist/quill.snow.css';
 
 /* You can add global styles to this file, and also import other style files */
 
@@ -12,7 +13,8 @@ $theme: matx.define-theme(
   (
     color: (
       theme-type: light,
-      primary: matx.$m3-azure-palette,
+      primary: matx.$m3-azure-palette
+
     ),
     typography: (
       brand-family: 'Roboto',
@@ -20,6 +22,16 @@ $theme: matx.define-theme(
     ),
   )
 );
+
+$dark-theme: matx.define-theme(
+  (
+    color: (
+      theme-type: dark,
+      primary: matx.$m3-azure-palette,
+    ),
+  )
+);
+
 html,
 body {
   height: 100%;
@@ -28,5 +40,59 @@ body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
   @include mat.all-component-themes($theme);
+  @include matx.color-variants-back-compat($theme);
   @include mat.typography-hierarchy($theme, $back-compat: true);
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-sidenav {
+  // Override the colors to create a dark sidenav.
+  @include mat.all-component-colors($dark-theme);
+}
+
+/*
+ * Material Quill & MatFormField
+ * - demo overrides
+ */
+
+.mat-mdc-form-field {
+
+  // Since the default quill styles already provide padding
+  &-appearance-fill .mat-form-field {
+    &-flex {
+      padding: 0 !important;
+    }
+
+    &-infix {
+      border-top: 0;
+      padding: 0;
+    }
+  }
+
+  .ql-container {
+    // set quill caret to match current Angular Material theme
+    caret-color: mat.get-theme-color($theme, primary) !important;
+
+    // Remove redundant quill snow-theme border
+    &.ql-snow {
+      border: none;
+      min-height: 15rem;
+    }
+
+    // Remove all default quill focus indicators
+    .ql-editor {
+      &:focus {
+        border: none !important;
+        box-shadow: none !important;
+      }
+    }
+  }
+
+  // make sure any quill tooltips, bubbles, or popups aren't occluded
+  .ql-tooltip {
+    z-index: 99999;
+  }
 }

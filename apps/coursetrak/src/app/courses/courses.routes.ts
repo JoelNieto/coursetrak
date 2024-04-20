@@ -13,6 +13,11 @@ export const COURSES_ROUTES: Routes = [
             (x) => x.CoursesListComponent
           ),
       },
+      {
+        path: ':id',
+        loadComponent: () =>
+          import('./course-home.component').then((x) => x.CourseHomeComponent),
+      },
     ],
   },
 ];

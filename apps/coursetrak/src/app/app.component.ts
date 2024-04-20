@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
+
+import { AuthStore } from './stores/auth.store';
 
 @Component({
   standalone: true,
@@ -10,4 +12,5 @@ import { RouterModule } from '@angular/router';
 })
 export class AppComponent {
   title = 'coursetrak';
+  public auth = inject(AuthStore);
 }
